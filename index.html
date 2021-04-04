@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 야구</title>
+    <style>
+
+        .container {
+            width: 500px;
+            height: 400px;
+            background-color: antiquewhite;
+            padding : 20px;
+            margin: 0 auto;
+        }
+
+        input {
+            display: inline-block;
+        }
+
+        .input_number {
+            margin: 8px;
+            width: auto;
+            text-align: center;
+        }
+
+        .submit {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 24px;
+        }
+        .answer {
+            width: 320px;
+            height: 250px;
+            padding: 20px;
+            background-color: white;
+            margin: 0 auto;
+            text-align: center;
+            
+        }
+
+        .answer>p {
+            color: crimson;
+        }
+        
+    </style>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="input_number"><input type="text" class="number_input" name="name" size="40"></div>
+        <button class="submit">맞추기</button>
+        <div class="answer">
+            <p>각 자릿수가 중복되지 않는 <br> 네 자리 숫자를 입력하세요</p>
+        </div>
+    </div>
+</body>
+</html>
