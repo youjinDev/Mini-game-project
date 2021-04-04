@@ -7,6 +7,10 @@
     <title>숫자 야구</title>
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
         .container {
             width: 500px;
             height: 400px;
@@ -17,6 +21,18 @@
 
         input {
             display: inline-block;
+        }
+
+        button {
+            background-color: beige;
+            width: 100px;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: blanchedalmond;
         }
 
         .input_number {
@@ -30,18 +46,32 @@
             margin: 0 auto;
             margin-bottom: 24px;
         }
+
         .answer {
             width: 320px;
-            height: 250px;
-            padding: 20px;
+            height: 200px;
+            padding: 18px;
             background-color: white;
             margin: 0 auto;
-            text-align: center;
-            
+            text-align: center; 
         }
 
         .answer>p {
             color: crimson;
+            font-size: 22px;
+            margin-top: 50px;
+        }
+
+        .chance {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 50%;
+            background-color: beige;
+            text-align: center;
+            font-size: 32px;
+            margin: 0 auto;
+            margin-top: 18px;
         }
         
     </style>
@@ -49,11 +79,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="input_number"><input type="text" class="number_input" name="name" size="40"></div>
+        <div class="input_number">
+            <input type="text" class="number_input" name="name" size="40">
+        </div>
         <button class="submit">맞추기</button>
         <div class="answer">
             <p>각 자릿수가 중복되지 않는 <br> 네 자리 숫자를 입력하세요</p>
         </div>
+        <div class="chance"></div>
     </div>
 </body>
 </html>
