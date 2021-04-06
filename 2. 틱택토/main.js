@@ -10,6 +10,7 @@ let playerX = true;
 let startPlayer = 'x';
 let countX = 5;
 let countO = 4;
+let isGameOver = false;
 
 // mainArray에 이미 만들어진 테이블 객체를 가져와야 함
 makeMainArray();
@@ -36,13 +37,14 @@ mainTable.addEventListener('click', (e) => {
         return;
     }
 
-    let isEmpty = (target.innerText !== '❌') && (target.innerText !== '⭕');
+    let isEmpty = ((target.innerText) === '🐇');
     if (!isEmpty) {
         alert('Already occupied!');
         return;
     } else {
-        putStone(target);
-        isWin(target);    }
+        putMark(target);
+        isWin(target);
+    }
 });
 
 function makeMainArray() {
@@ -56,8 +58,7 @@ function makeMainArray() {
     }
 }
 
-function putStone(target) {
-    console.log('putStone 실행');
+function putMark(target) {
     if(playerX) {
         target.innerText = '❌'
         target.style.backgroundColor = '#ffff00';
@@ -67,6 +68,10 @@ function putStone(target) {
         target.style.backgroundColor = '#40c4ff';
         countO--;
     }
+    swapTurn();
+}
+
+function swapTurn() {
     playerX = !playerX;
 }
 
@@ -84,25 +89,19 @@ function isWin(target) {
     if (countO > 2 || countX > 2) {
         return;
     } else {
-        console.log (countX, countO, '지금부터 isWin 실행');
-
         // 가로 빙고
         rowCheck(target);
-    
         // 세로 빙고
         columnCheck(target);
-    
         // 대각선 빙고
         diagonalCheck(target);
     }
-
-    // 무승부 : countX, countO이 둘 다 0일 때
-    drawCheck(); 
+    if (!isGameOver) {
+        drawCheck();
+    }
 }
 
 function rowCheck(target) {
-    // 가로로 이기기
-    // innerText=x가 mainArray[i][j]에서 i가 0, 1, 2
     for (let i = 0; i < 3 ; i++) {
         let tempArr = [];
         for (let j = 0 ; j < 3 ; j++) {
@@ -115,7 +114,6 @@ function rowCheck(target) {
             gameOver('win', target.innerText);
             return;
         }
-        console.log(`tempArrRow is ${tempArr}`);
     }
 }
 
@@ -132,13 +130,10 @@ function columnCheck(target) {
             gameOver('win', target.innerText);
             return;
         }
-        console.log(`tempArrColumn is ${tempArr}`);
     }
 }
 
 function diagonalCheck(target) {
-    console.log('대각선 check start');
-
     let tempArray = [];
     tempArray.push(mainArray[0][2].innerText);
     tempArray.push(mainArray[1][1].innerText);
@@ -146,22 +141,17 @@ function diagonalCheck(target) {
     let isRightToLeftDiagonal = tempArray.every(element => element == tempArray[0]);
 
     tempArray.length = 0;
-    console.log(tempArray);
     tempArray.push(mainArray[0][0].innerText);
     tempArray.push(mainArray[1][1].innerText);
     tempArray.push(mainArray[2][2].innerText);
-    console.log(tempArray);
-
     let isLeftTorightDiagonal = tempArray.every(element => element == tempArray[0]);
 
     if (isRightToLeftDiagonal || isLeftTorightDiagonal) {
         gameOver('win', target.innerText);
     }
-        return;
 }
 
 function drawCheck() {
-    // 선공쪽 count == 0일 때 draw
     if (startPlayer == 'x' && countX == 0) {
         gameOver('draw');
         return;
@@ -180,7 +170,8 @@ function gameOver(reason, player) {
             alert('비겼습니다!');
             break;
     }
-    buttonDisabled(false);
+    isGameOver = true;
+    console.log(mainArray);
 }
 
 function buttonDisabled(boolean) {
