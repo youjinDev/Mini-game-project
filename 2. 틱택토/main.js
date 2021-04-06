@@ -8,8 +8,8 @@ let mainArray = [];
 // 스타트 기본값 - x 선공
 let playerX = true;
 let startPlayer = 'x';
-let countX = 5;
-let countO = 4;
+let remainCountX = 5;
+let remainCountO = 4;
 let isGameOver = false;
 
 // mainArray에 이미 만들어진 테이블 객체를 가져와야 함
@@ -33,10 +33,8 @@ mainTable.addEventListener('click', (e) => {
     const target = e.target;
     // target === TD 일 때 한정
     if (target.tagName != 'TD') {
-        console.log('It is not a right event target');
         return;
     }
-
     let isEmpty = ((target.innerText) === '🐇');
     if (!isEmpty) {
         alert('Already occupied!');
@@ -62,11 +60,11 @@ function putMark(target) {
     if(playerX) {
         target.innerText = '❌'
         target.style.backgroundColor = '#ffff00';
-        countX--;
+        remainCountX--;
     } else {
         target.innerText = '⭕'
         target.style.backgroundColor = '#40c4ff';
-        countO--;
+        remainCountO--;
     }
     swapTurn();
 }
@@ -78,15 +76,15 @@ function swapTurn() {
 function setCount() {
     // 선공이 쪽이 총 5개, 후공이 총 4개
     if (playerX) {
-        countX = 5;
+        remainCountX = 5;
     } else {
-        countO = 5;
+        remainCountO = 5;
     }
 }
 
 function isWin(target) {
     // o or x가 세 개 이상 놓일 때부터 함수 실행
-    if (countO > 2 || countX > 2) {
+    if (remainCountO > 2 || remainCountX > 2) {
         return;
     } else {
         // 가로 빙고
@@ -152,10 +150,10 @@ function diagonalCheck(target) {
 }
 
 function drawCheck() {
-    if (startPlayer == 'x' && countX == 0) {
+    if (startPlayer == 'x' && remainCountX == 0) {
         gameOver('draw');
         return;
-    } else if(startPlayer == 'o' && countO == 0) {
+    } else if(startPlayer == 'o' && remainCountO == 0) {
         gameOver('draw');
         return;
     }
@@ -170,8 +168,7 @@ function gameOver(reason, player) {
             alert('비겼습니다!');
             break;
     }
-    isGameOver = true;
-    console.log(mainArray);
+    isGameOver = true;;
 }
 
 function buttonDisabled(boolean) {
