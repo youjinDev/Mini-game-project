@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <section class="game__container">
+        <section class="header">
+            <div class="board">
+                <div class="board__title">
+                    <p><strong>ROCK</strong></p>
+                    <p><strong>SCISSORS</strong></p>
+                    <p><strong>PAPER</strong></p>
+                </div>
+                <div class="board__score">
+                    <p><strong>SCORE</strong></p>
+                    <p class="score">12</p>
+                </div>
+            </div>
+        </section>
+        <section class="playground">
+            <div class="container rock">
+                <img class="img__rock" src="./img/rock.png" alt="rock">
+            </div>
+            <div class="img__container--items">
+                <div class="container scissors">
+                    <img class="img__scissors"src="./img/scissors.png" alt="scissors">
+                </div>
+                <div class="container paper">
+                    <img class="img__paper"src="./img/paper.png" alt="paper">
+                </div>
+            </div>
+        </section>
+        
+        <section class="footer">
+            <button class="btn__rules">RULES</button>
+            <p class="attribution">Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank">Frontend Mentor</a>.
+              Coded by Youjin Cha.</p>
+        </section>
+        <section class="popup__rules invisible">
+            <div class="popup__header">
+                <span><strong>RULES</strong></span>
+                <button class="popup__btn--close">X</button>
+            </div>
+            <img src="./img/image-rules.svg" alt="" class="img__rules">
+        </section>
+    </section>
+    </body>
+</html>
