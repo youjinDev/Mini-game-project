@@ -8,6 +8,14 @@ img {
   height: 130px;
 }
 
+a:link {
+  color: yellow;
+}
+
+a:visited {
+  color: crimson;
+}
+
 .game__container {
   position: relative;
 }
@@ -76,6 +84,7 @@ img {
   height: 150px;
   border-radius: 50%;
   padding: 10px;
+  box-shadow: 5px 5px 3px 3px;
 }
 
 .container:hover {
@@ -141,6 +150,11 @@ img {
   color: white;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.btn__rules:hover {
+  background-color: white;
+  color: black;
 }
 
 /* popup */
