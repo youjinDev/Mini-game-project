@@ -1,6 +1,10 @@
 import Hand from './hand.js';
 
 const containers = document.querySelectorAll('.container');
+const mineContainer = document.querySelector('.mine__container');
+const houseContainer = document.querySelector('.house__container');
+const mineText = document.querySelector('.mine__container > p');
+const houseText = document.querySelector('.house__container > p');
 const mine = document.querySelector('.mine');
 const house = document.querySelector('.house');
 
@@ -44,8 +48,14 @@ export default class Field {
         containers.forEach(element => {
             element.style.visibility = 'hidden';
         });
+        
         mine.style.visibility = 'visible';
+        mineContainer.style.visibility = 'visible';
+        mineText.innerHTML = 'YOU PICKED';
+
         house.style.visibility = 'visible';
+        houseContainer.style.visibility = 'visible';
+        houseText.innerHTML = 'HOUSE PICKED';
 
         this.handOfPlayer.displayHandImgTo(mine);
         

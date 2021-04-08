@@ -14,6 +14,7 @@ export default class Hand{
     }
 
     fightVs(Hand) {
+        // change score, set vitcory animation
         if (this.handValue == Hand.handValue) {
             console.log('draw');
         } else if ((this.handValue + 1) % 3 === Hand.handValue) {
