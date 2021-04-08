@@ -14,61 +14,47 @@ export default class Field {
 
     onClick = (event) => {
         const target = event.target;
-        const rock = target.matches('.img__rock');
-        const scissors = target.matches('.img__scissors');
-        const paper = target.matches('.img__paper');
+        const isRock = target.matches('.img__rock');
+        const isScissors = target.matches('.img__scissors');
+        const isPaper = target.matches('.img__paper');
 
-        // 주먹 가위 보가 아니면 return
-        if (!rock && !scissors && !paper) {
+        if (!isRock && !isScissors && !isPaper) {
             return;
         }
 
-        console.log(target);
-
-        // 하우스 측 랜덤 셋팅하기
+        // setting the house's hand value by random
         this.handOfHouse.setHandValueRandom();
-        console.log(this.handOfHouse);
         
-        if (rock) {
+        // when target onClicked then determine your hand value and houses
+        if (isRock) {
             this.handOfPlayer.setHandValue(0);
-            this.changeGameField('rock');
-        } else if (scissors) {
+            this.changeGameField();
+        } else if (isScissors) {
             this.handOfPlayer.setHandValue(1);
-        } else if (paper) {
+            this.changeGameField();
+        } else if (isPaper) {
             this.handOfPlayer.setHandValue(2);
+            this.changeGameField();
         }
-        console.log(this.handOfPlayer);
 
-        this.handOfPlayer.isStrongerthan(this.handOfHouse); // 이걸 setTimeout으로 나중에 부르기
+        this.handOfPlayer.fightVs(this.handOfHouse);
     }
     
-    changeGameField(hand) {
+    changeGameField() {
         containers.forEach(element => {
             element.style.visibility = 'hidden';
         });
-
         mine.style.visibility = 'visible';
         house.style.visibility = 'visible';
 
-        if (hand == 'rock') {
-            this.displayHandValue(mine, 'rock');
-        } else if (hand == 'scissors') {
-            this.displayHandValue(mine, 'rock');
-        } else if (hand == 'paper') {
-            this.displayHandValue(mine, 'rock');
-        }
+        this.handOfPlayer.displayHandImgTo(mine);
+        
         setTimeout(() => {
             console.log('start');
-            house.style.removeProperty('animation');
-            this.displayHandValue(house, 'scissors');
+            house.style.animationPlayState = 'paused';
+            house.style.borderColor = 'whitesmoke';
+            this.handOfHouse.displayHandImgTo(house);
         }, 3000);
-    }
-
-    displayHandValue(target, hand) {
-        const img = document.createElement('img');
-        img.setAttribute('src', `./img/${hand}.png`);
-        img.style.margin = '0 10px';
-        target.appendChild(img); // target == mine || house
     }
 
 }

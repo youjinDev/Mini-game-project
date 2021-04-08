@@ -73,7 +73,6 @@ img {
   height: 150px;
   background-color: honeydew;
   border-radius: 50%;
-  box-shadow: 5px 5px 3px 3px;
   left: 30%;
   top: 100px;
 }
@@ -83,12 +82,11 @@ img {
   position: absolute;
   border: 10px solid whitesmoke;
   padding: 10px;
-  border-color: whitesmoke transparent transparent;
+  border-color: rgb(245, 245, 36) transparent transparent;
   border-radius: 50%;
   width: 150px;
   height: 150px;
   background-color: transparent;
-  box-shadow: 5px 5px 3px 3px;
   right: 30%;
   top: 100px;
   animation: spin 0.8s linear infinite;
