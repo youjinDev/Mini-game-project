@@ -7,12 +7,12 @@ export default class Hand{
         this.hands = [this.rock, this.scissors, this.paper];
     }
 
-    setHandValueRandom() {
-        this.handValue = this.hands[this.randomIndex()];
+    setHandValue(value) {
+        this.handValue = value;
     }
 
-    randomIndex() {
-        return Math.floor(Math.random() * 3);
+    setHandValueRandom() {
+        this.handValue = this.hands[randomIndex()];
     }
 
     isStrongerthan(Hand) {
@@ -21,6 +21,7 @@ export default class Hand{
 
     fight(Hand) {
         if (this.handValue == Hand.handValue) {
+            // 지면 
             console.log('draw');
         } else if ((this.handValue + 1) % 3 === Hand.handValue) {
             console.log(`you win`);
@@ -28,5 +29,8 @@ export default class Hand{
             console.log(`you lose`);
         }
     }
+}
 
+function randomIndex() {
+    return Math.floor(Math.random() * 3);
 }

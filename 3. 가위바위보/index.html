@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>가위바위보</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css" data-version="main"/>
+
     <script type = "module" src="./src/main.js" defer></script>
-    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <section class="game__container">
@@ -29,6 +30,8 @@
             <div class="container rock">
                 <img class="img__rock" src="./img/rock.png" alt="rock">
             </div>
+            <div class="mine"></div>
+            <div class="house"></div>
             <div class="img__container--items">
                 <div class="container scissors">
                     <img class="img__scissors"src="./img/scissors.png" alt="scissors">
@@ -41,9 +44,6 @@
         
         <section class="footer">
             <button class="btn__rules">RULES</button>
-            <p class="attribution">Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge"
-                target="_blank">Frontend Mentor</a>.
-              Coded by <a href="https://github.com/youjinDev" target="_blank">Youjin Cha</a></p>
         </section>
         <section class="popup__rules invisible">
             <div class="popup__header">
