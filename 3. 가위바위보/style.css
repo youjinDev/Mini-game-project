@@ -134,7 +134,6 @@ img {
 
 .img__rock {
   display: block;
-  margin: 0 auto;
   cursor: pointer;
 }
 
@@ -146,15 +145,11 @@ img {
 
 .img__scissors {
   display: block;
-  margin: 0 auto;
   cursor: pointer;
-  width: 130px;
-  height: 130px;
 }
 
 .img__paper {
   display: block;
-  margin: 0 auto;
   cursor: pointer;
 }
 

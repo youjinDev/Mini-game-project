@@ -23,6 +23,8 @@ export default class Field {
             return;
         }
 
+        console.log(target);
+
         // 하우스 측 랜덤 셋팅하기
         this.handOfHouse.setHandValueRandom();
         console.log(this.handOfHouse);
@@ -43,21 +45,30 @@ export default class Field {
     changeGameField(hand) {
         containers.forEach(element => {
             element.style.visibility = 'hidden';
-            console.log(element);
         });
 
         mine.style.visibility = 'visible';
         house.style.visibility = 'visible';
 
         if (hand == 'rock') {
-            const img = document.createElement('img');
-            img.setAttribute('src', './img/rock.png');
-            mine.appendChild(img);
+            this.displayHandValue(mine, 'rock');
         } else if (hand == 'scissors') {
-
+            this.displayHandValue(mine, 'rock');
         } else if (hand == 'paper') {
-
+            this.displayHandValue(mine, 'rock');
         }
+        setTimeout(() => {
+            console.log('start');
+            house.style.removeProperty('animation');
+            this.displayHandValue(house, 'scissors');
+        }, 3000);
+    }
+
+    displayHandValue(target, hand) {
+        const img = document.createElement('img');
+        img.setAttribute('src', `./img/${hand}.png`);
+        img.style.margin = '0 10px';
+        target.appendChild(img); // target == mine || house
     }
 
 }
