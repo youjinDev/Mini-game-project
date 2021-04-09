@@ -3,8 +3,8 @@ import Hand from './hand.js';
 const containers = document.querySelectorAll('.container');
 const mineContainer = document.querySelector('.mine__container');
 const houseContainer = document.querySelector('.house__container');
-const mineText = document.querySelector('.mine__container > p');
-const houseText = document.querySelector('.house__container > p');
+const mineText = document.querySelector('.mine__text');
+const houseText = document.querySelector('.house__text');
 const mine = document.querySelector('.mine');
 const house = document.querySelector('.house');
 
@@ -44,7 +44,6 @@ export default class Field {
         // 여기서 승패 결정
         this.handOfPlayer.fightVs(this.handOfHouse);
         this.switchGameField();
-
     }
     
     switchGameField() {

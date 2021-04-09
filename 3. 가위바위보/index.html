@@ -12,7 +12,7 @@
 </head>
 <body>
     <section class="game__container">
-        <section class="header">
+        <header class="header">
             <div class="board">
                 <div class="board__title">
                     <p><strong>ROCK</strong></p>
@@ -24,33 +24,42 @@
                     <p class="score">12</p>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <section class="playground">
-            <div class="container rock">
-                <img class="img__rock" src="./img/rock.png" alt="rock">
+        <main class="playground">
+            <!-- main board -->
+            <div class="main__container">
+                <div class="img__container--top">
+                    <div class="container rock">
+                        <img class="img__rock" src="./img/rock.png" alt="rock">
+                    </div>
+                </div>
+                <div class="img__container--bottom">
+                    <div class="container scissors">
+                        <img class="img__scissors"src="./img/scissors.png" alt="scissors">
+                    </div>
+                    <div class="container paper">
+                        <img class="img__paper"src="./img/paper.png" alt="paper">
+                    </div>
+                </div>
             </div>
+            
             <!-- result board -->
-            <div class="mine__container">
-                <p></p>
-                <div class="mine"></div>
-            </div>
-            <div class="house__container">
-                <p></p>
-                <div class="house"></div>
-            </div>
-            <div class="img__container--items">
-                <div class="container scissors">
-                    <img class="img__scissors"src="./img/scissors.png" alt="scissors">
+            <div class="result__container">
+                <p class="mine__text"></p>
+                <div class="mine__container">
+                    <div class="mine"></div>
                 </div>
-                <div class="container paper">
-                    <img class="img__paper"src="./img/paper.png" alt="paper">
+                <div class="board__result">
+                    <p class="message__result"></p>
+                    <button class="btn__replay">REPLAY</button>
+                </div>
+                <p class="house__text"></p>
+                <div class="house__container">
+                    <div class="house"></div>
                 </div>
             </div>
-            <div class="board__result">
-                <p class = "message__result"></p>
-            </div>
-        </section>
+        </main>
         
         <section class="footer">
             <button class="btn__rules">RULES</button>
