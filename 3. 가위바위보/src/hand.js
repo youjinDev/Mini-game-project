@@ -1,8 +1,10 @@
-
 export default class Hand{
     constructor() {
         this.handValue = undefined;
         this.handsImgArray = ['./img/rock.png', './img/scissors.png', './img/paper.png'];
+        this.scoreBoard = document.querySelector('.score');
+        this.score = 12;
+        this.state = undefined;
     }
 
     setHandValue(value) {
@@ -17,9 +19,14 @@ export default class Hand{
         // change score, set vitcory animation
         if (this.handValue == Hand.handValue) {
             console.log('draw');
+            this.state = 'draw';
         } else if ((this.handValue + 1) % 3 === Hand.handValue) {
             console.log(`you win`);
+            this.score += 3;
+            this.state = 'win';
         } else {
+            this.score -= 3;
+            this.state = 'lose';
             console.log(`you lose`);
         }
     }
@@ -44,6 +51,10 @@ export default class Hand{
                 targetDiv.style.backgroundColor = 'darkturquoise';
                 break;
         }
+    }
+
+    updateScoreBoard() {
+        this.scoreBoard.innerText = this.score;
     }
 }
 

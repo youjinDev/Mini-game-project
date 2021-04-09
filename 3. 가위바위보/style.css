@@ -174,12 +174,45 @@ img {
   cursor: pointer;
 }
 
+.board__result {
+  visibility: hidden;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+}
+
+.message__result {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.btn__replay {
+  width: 200px;
+  background-color: white;
+  color: crimson;
+  padding: 10px 30px;
+  border: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn__replay:hover {
+  transform: scale(1.1);
+}
+
 /* footer */
 
 .footer {
   position: relative;
   text-align: center;
   color: white;
+  width: 100%;
+  background-color: darkmagenta;
+  height: auto;
 }
 
 .btn__rules {

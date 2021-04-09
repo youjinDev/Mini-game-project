@@ -8,6 +8,10 @@ const houseText = document.querySelector('.house__container > p');
 const mine = document.querySelector('.mine');
 const house = document.querySelector('.house');
 
+const footer = document.querySelector('.footer');
+const resultBoard = document.querySelector('.board__result');
+const resultText = document.querySelector('.message__result');
+
 export default class Field {
     constructor() {
         this.field = document.querySelector('.playground');
@@ -41,6 +45,7 @@ export default class Field {
             this.changeGameField();
         }
 
+        // 여기서 승패 결정
         this.handOfPlayer.fightVs(this.handOfHouse);
     }
     
@@ -48,23 +53,40 @@ export default class Field {
         containers.forEach(element => {
             element.style.visibility = 'hidden';
         });
+
+        footer.style.display = 'none';
         
         mine.style.visibility = 'visible';
         mineContainer.style.visibility = 'visible';
         mineText.innerHTML = 'YOU PICKED';
-
+        
         house.style.visibility = 'visible';
         houseContainer.style.visibility = 'visible';
         houseText.innerHTML = 'HOUSE PICKED';
-
+        
         this.handOfPlayer.displayHandImgTo(mine);
         
         setTimeout(() => {
-            console.log('start');
+            console.log('start setTimeOut');
             house.style.animationPlayState = 'paused';
             house.style.borderColor = 'whitesmoke';
             this.handOfHouse.displayHandImgTo(house);
+            this.updateResultBoard();
         }, 3000);
+        
+        setTimeout(() => {
+            this.handOfPlayer.updateScoreBoard();
+            resultBoard.style.visibility = 'visible';
+        }, 4000);
     }
 
+    updateResultBoard() {
+        if (this.handOfPlayer.state = 'win') {
+            resultText.innerText = 'YOU WIN';
+        } else if (this.handOfPlayer.state = 'LOSE') {
+            resultText.innerText = 'YOU LOSE';
+        } else if (this.handOfPlayer.state = 'draw') {
+            resultText.innerText = 'DRAW';
+        }        
+    }
 }
