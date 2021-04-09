@@ -1,3 +1,5 @@
+const resultText = document.querySelector('.message__result');
+
 export default class Hand{
     constructor() {
         this.handValue = undefined;
@@ -17,18 +19,16 @@ export default class Hand{
 
     fightVs(Hand) {
         // change score, set vitcory animation
-        if (this.handValue == Hand.handValue) {
-            console.log('draw');
+        if (this.handValue === Hand.handValue) {
             this.state = 'draw';
         } else if ((this.handValue + 1) % 3 === Hand.handValue) {
-            console.log(`you win`);
             this.score += 3;
             this.state = 'win';
         } else {
             this.score -= 3;
             this.state = 'lose';
-            console.log(`you lose`);
         }
+        this.updateResultBoard();
     }
     
     displayHandImgTo(targetDiv) {
@@ -55,6 +55,20 @@ export default class Hand{
 
     updateScoreBoard() {
         this.scoreBoard.innerText = this.score;
+    }
+
+    updateResultBoard() {
+        switch(this.state) {
+            case 'win' :
+                resultText.innerText = 'YOU WIN';
+                break;
+            case 'lose' :
+                resultText.innerText = 'YOU LOSE';
+                break;
+            case 'draw' :
+                resultText.innerText = 'DRAW';
+                break;
+        }
     }
 }
 

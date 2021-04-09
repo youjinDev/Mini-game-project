@@ -10,7 +10,6 @@ const house = document.querySelector('.house');
 
 const footer = document.querySelector('.footer');
 const resultBoard = document.querySelector('.board__result');
-const resultText = document.querySelector('.message__result');
 
 export default class Field {
     constructor() {
@@ -32,24 +31,23 @@ export default class Field {
 
         // setting the house's hand value by random
         this.handOfHouse.setHandValueRandom();
-        
+
         // when target onClicked then determine your hand value and houses
         if (isRock) {
             this.handOfPlayer.setHandValue(0);
-            this.changeGameField();
         } else if (isScissors) {
             this.handOfPlayer.setHandValue(1);
-            this.changeGameField();
         } else if (isPaper) {
             this.handOfPlayer.setHandValue(2);
-            this.changeGameField();
         }
-
+        
         // 여기서 승패 결정
         this.handOfPlayer.fightVs(this.handOfHouse);
+        this.switchGameField();
+
     }
     
-    changeGameField() {
+    switchGameField() {
         containers.forEach(element => {
             element.style.visibility = 'hidden';
         });
@@ -67,26 +65,17 @@ export default class Field {
         this.handOfPlayer.displayHandImgTo(mine);
         
         setTimeout(() => {
-            console.log('start setTimeOut');
+            console.log('start setTimeOut 3');
             house.style.animationPlayState = 'paused';
             house.style.borderColor = 'whitesmoke';
             this.handOfHouse.displayHandImgTo(house);
-            this.updateResultBoard();
+            console.log(this.handOfPlayer.state);
         }, 3000);
         
         setTimeout(() => {
+            console.log('start setTimeOut 5');
             this.handOfPlayer.updateScoreBoard();
             resultBoard.style.visibility = 'visible';
         }, 4000);
-    }
-
-    updateResultBoard() {
-        if (this.handOfPlayer.state = 'win') {
-            resultText.innerText = 'YOU WIN';
-        } else if (this.handOfPlayer.state = 'LOSE') {
-            resultText.innerText = 'YOU LOSE';
-        } else if (this.handOfPlayer.state = 'draw') {
-            resultText.innerText = 'DRAW';
-        }        
     }
 }

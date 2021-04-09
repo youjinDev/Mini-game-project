@@ -64,6 +64,10 @@ img {
 
 /* play ground */
 
+.result__board {
+  /* display: none; */
+}
+
 .mine__container {
   visibility: hidden;
   text-align: center;
