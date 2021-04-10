@@ -1,15 +1,18 @@
 import Hand from './hand.js';
 
-const containers = document.querySelectorAll('.container');
+const mainField = document.querySelector('.main__container');
+const resultFiled = document.querySelector('.result__container');
+
+const resultBoard = document.querySelector('.board__result');
 const mineContainer = document.querySelector('.mine__container');
 const houseContainer = document.querySelector('.house__container');
-const mineText = document.querySelector('.mine__text');
-const houseText = document.querySelector('.house__text');
-const mine = document.querySelector('.mine');
-const house = document.querySelector('.house');
+const mine = document.querySelector('.img__result--mine');
+const house = document.querySelector('.img__result--house');
 
-const footer = document.querySelector('.footer');
-const resultBoard = document.querySelector('.board__result');
+const scoreBoard = document.querySelector('.score');
+const resultText = document.querySelector('.message__result');
+
+let isWin;
 
 export default class Field {
     constructor() {
@@ -41,40 +44,67 @@ export default class Field {
             this.handOfPlayer.setHandValue(2);
         }
         
-        // 여기서 승패 결정
+        // 여기서 승패(state) 결정
         this.handOfPlayer.fightVs(this.handOfHouse);
-        this.switchGameField();
+
+        this.updateResultBoard();
+        this.renderGameField();
     }
     
-    switchGameField() {
-        containers.forEach(element => {
-            element.style.visibility = 'hidden';
-        });
+    renderGameField() {
+        // main filed 지우고 result field 보이기
+        mainField.style.display = 'none';
+        resultFiled.style.visibility = 'visible';
 
-        footer.style.display = 'none';
-        
         mine.style.visibility = 'visible';
         mineContainer.style.visibility = 'visible';
-        mineText.innerHTML = 'YOU PICKED';
         
         house.style.visibility = 'visible';
         houseContainer.style.visibility = 'visible';
-        houseText.innerHTML = 'HOUSE PICKED';
         
         this.handOfPlayer.displayHandImgTo(mine);
         
         setTimeout(() => {
-            console.log('start setTimeOut 3');
             house.style.animationPlayState = 'paused';
             house.style.borderColor = 'whitesmoke';
             this.handOfHouse.displayHandImgTo(house);
-            console.log(this.handOfPlayer.state);
+
+            setTimeout(() => {
+                this.updateScoreBoard();
+                resultBoard.style.visibility = 'visible';
+
+                if (this.handOfPlayer.state === 'win') {
+                    this.blinkAnimation(mine);
+                } else if (this.handOfPlayer.state === 'lose') {
+                    this.blinkAnimation(house); 
+                } else {
+                    this.blinkAnimation(house);
+                    this.blinkAnimation(mine); 
+                }
+            }, 1000);
+
         }, 3000);
-        
-        setTimeout(() => {
-            console.log('start setTimeOut 5');
-            this.handOfPlayer.updateScoreBoard();
-            resultBoard.style.visibility = 'visible';
-        }, 4000);
+    }
+
+    updateResultBoard() {
+        switch(this.handOfPlayer.state) {
+            case 'win' :
+                resultText.innerText = 'YOU WIN!';
+                break;
+            case 'lose' :
+                resultText.innerText = 'YOU LOSE!';
+                break;
+            case 'draw' :
+                resultText.innerText = 'DRAW';
+                break;
+        }
+    }
+
+    updateScoreBoard() {
+        scoreBoard.innerText = this.handOfPlayer.score;
+    }
+
+    blinkAnimation(winner) {
+        winner.style.setProperty('animation', 'blink 300ms ease-in-out 4 alternate');
     }
 }

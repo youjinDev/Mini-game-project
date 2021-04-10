@@ -19,8 +19,8 @@ p {
 
 button {
   border-radius: 12px;
-  border: transparent;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
@@ -31,10 +31,13 @@ button:hover {
 
 .game__container {
   display: flex;
+  position: relative;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 /* header */
+
 header {
   display: flex;
   justify-content: center;
@@ -67,11 +70,11 @@ header {
   background-color: whitesmoke;
   width: 120px;
   border-radius: 10px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .board__score :nth-child(1) {
-  margin-top: 6px;
   color: crimson;
 }
 
@@ -87,6 +90,7 @@ header {
 }
 
 /* main container */
+/* js에서 여기를 display: none으로 설정해야함 */
 
 .main__container {
   position: absolute;
@@ -136,9 +140,11 @@ header {
 /* display none - result만 수정하도록 수정하기 */
 .result__container {
   display: grid;
+  visibility: hidden;
   width: 50%;
   margin: 20px auto;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  justify-content: center;
+  grid-template-columns: 1fr 200px 1fr;
   grid-template-rows: 0.2fr 1fr;
   row-gap: 20px;
 }
@@ -159,7 +165,7 @@ header {
   grid-row: 2/3;
 }
 
-.mine {
+.img__result--mine {
   display: block;
   margin: 0 auto;
   visibility: hidden;
@@ -192,20 +198,18 @@ header {
 }
 
 .btn__replay {
-  z-index: 1;
   display: block;
-  background-color: white;
-  color: crimson;
+  border: 2px solid white;
+  color: white;
   padding: 10px 30px;
-  border: transparent;
   font-size: 15px;
   margin: 0 auto;
-  font-weight: bold;
+  background-color: transparent;
 }
 
 .btn__replay:hover {
-  color: white;
-  background-color: crimson;
+  color: crimson;
+  background-color: white;
 }
 
 .house__text {
@@ -223,7 +227,7 @@ header {
   grid-row: 2/3;
 }
 
-.house {
+.img__result--house {
   display: block;
   margin: 0 auto;
   visibility: hidden;
@@ -240,21 +244,18 @@ header {
 /* footer */
 
 .footer {
-  position: relative;
-  text-align: center;
+  display: flex;
   color: white;
-  width: 100%;
-  background-color: darkmagenta;
-  height: auto;
+  justify-content: flex-end;
+  margin-top: 200px;
 }
 
 .btn__rules {
-  position: absolute;
-  right: 10%;
   background-color: transparent;
   padding: 10px 30px;
-  border: 2px solid whitesmoke;
+  border: 2px solid white;
   color: white;
+  margin-right: 50px;
 }
 
 .btn__rules:hover {
@@ -266,13 +267,11 @@ header {
 
 .popup__rules {
   position: absolute;
-  top: 180px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -300px);
   background-color: white;
   width: 500px;
   height: 420px;
-  margin: 0 auto;
   border-radius: 20px;
 }
 
@@ -307,5 +306,25 @@ header {
 @keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    justify-content: center;
+    margin-top: 200px;
+  }
+
+  .btn__rules {
+    margin-right: 0;
   }
 }

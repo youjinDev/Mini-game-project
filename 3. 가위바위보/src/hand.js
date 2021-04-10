@@ -1,10 +1,7 @@
-const resultText = document.querySelector('.message__result');
-
 export default class Hand{
     constructor() {
         this.handValue = undefined;
         this.handsImgArray = ['./img/rock.png', './img/scissors.png', './img/paper.png'];
-        this.scoreBoard = document.querySelector('.score');
         this.score = 12;
         this.state = undefined;
     }
@@ -28,7 +25,6 @@ export default class Hand{
             this.score -= 3;
             this.state = 'lose';
         }
-        this.updateResultBoard();
     }
     
     displayHandImgTo(targetDiv) {
@@ -49,24 +45,6 @@ export default class Hand{
                 break;
             case 2:
                 targetDiv.style.backgroundColor = 'darkturquoise';
-                break;
-        }
-    }
-
-    updateScoreBoard() {
-        this.scoreBoard.innerText = this.score;
-    }
-
-    updateResultBoard() {
-        switch(this.state) {
-            case 'win' :
-                resultText.innerText = 'YOU WIN';
-                break;
-            case 'lose' :
-                resultText.innerText = 'YOU LOSE';
-                break;
-            case 'draw' :
-                resultText.innerText = 'DRAW';
                 break;
         }
     }

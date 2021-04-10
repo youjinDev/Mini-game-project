@@ -46,30 +46,35 @@
             
             <!-- result board -->
             <div class="result__container">
-                <p class="mine__text"></p>
+                <p class="mine__text">YOU PICKED</p>
                 <div class="mine__container">
-                    <div class="mine"></div>
+                    <div class="img__result--mine"></div>
                 </div>
                 <div class="board__result">
                     <p class="message__result"></p>
                     <button class="btn__replay">REPLAY</button>
                 </div>
-                <p class="house__text"></p>
+                <p class="house__text">HOUSE PICKED</p>
                 <div class="house__container">
-                    <div class="house"></div>
+                    <div class="img__result--house"></div>
                 </div>
             </div>
+            
+            <!-- popup -->
+            <section class="popup__rules invisible">
+                <div class="popup__header">
+                    <span><strong>RULES</strong></span>
+                    <button class="popup__btn--close">X</button>
+                </div>
+                <img src="./img/image-rules.svg" alt="" class="img__rules">
+            </section>
         </main>
-        
-        <section class="footer">
+
+        <footer class="footer">
             <button class="btn__rules">RULES</button>
-        </section>
-        <section class="popup__rules invisible">
-            <div class="popup__header">
-                <span><strong>RULES</strong></span>
-            </div>
-            <img src="./img/image-rules.svg" alt="" class="img__rules">
-        </section>
+        </footer>
+
     </section>
+    
     </body>
 </html>
