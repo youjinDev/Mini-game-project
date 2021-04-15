@@ -44,7 +44,7 @@ export default class Field {
             this.handOfPlayer.setHandValue(2);
         }
         
-        // 여기서 승패(state) 결정
+        // determined 'state' right here
         this.handOfPlayer.fightVs(this.handOfHouse);
 
         this.updateResultBoard();
@@ -52,7 +52,7 @@ export default class Field {
     }
     
     renderGameField() {
-        // main filed 지우고 result field 보이기
+        // make main-filed hidden, result-field visible
         mainField.style.display = 'none';
         resultFiled.style.visibility = 'visible';
 
