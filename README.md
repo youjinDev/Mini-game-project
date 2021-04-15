@@ -1,2 +1,1 @@
-# Mini-game-project
- vaniila JS
+# Mini-game-projects
