@@ -11,7 +11,7 @@ with vaniila js
 
 ### 사용된 문법
 
-## 2. [틱택토❌⭕]
+## 2. [틱택토❌⭕](https://github.com/youjinDev/Mini-game-project/tree/main/2.%20%ED%8B%B1%ED%83%9D%ED%86%A0)
 ### 게임 기능 :
 - Player는 게임 시작 전, ❌와 ⭕ 둘 중 선택할 수 있습니다. 단, 게임 도중에는 바꿀 수 없습니다.
 
