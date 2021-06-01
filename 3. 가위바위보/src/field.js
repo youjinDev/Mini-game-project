@@ -12,8 +12,6 @@ const house = document.querySelector('.img__result--house');
 const scoreBoard = document.querySelector('.score');
 const resultText = document.querySelector('.message__result');
 
-let isWin;
-
 export default class Field {
     constructor() {
         this.field = document.querySelector('.playground');
@@ -35,7 +33,7 @@ export default class Field {
         // setting the house's hand value by random
         this.handOfHouse.setHandValueRandom();
 
-        // when target onClicked then determine your hand value and houses
+        // when target onClicked then determine your hand value and house's
         if (isRock) {
             this.handOfPlayer.setHandValue(0);
         } else if (isScissors) {
@@ -51,6 +49,20 @@ export default class Field {
         this.renderGameField();
     }
     
+    updateResultBoard() {
+        switch(this.handOfPlayer.state) {
+            case 'win' :
+                resultText.innerText = 'YOU WIN!';
+                break;
+            case 'lose' :
+                resultText.innerText = 'YOU LOSE!';
+                break;
+            case 'draw' :
+                resultText.innerText = 'DRAW';
+                break;
+        }
+    }
+
     renderGameField() {
         // make main-filed hidden, result-field visible
         mainField.style.display = 'none';
@@ -84,20 +96,6 @@ export default class Field {
             }, 1000);
 
         }, 3000);
-    }
-
-    updateResultBoard() {
-        switch(this.handOfPlayer.state) {
-            case 'win' :
-                resultText.innerText = 'YOU WIN!';
-                break;
-            case 'lose' :
-                resultText.innerText = 'YOU LOSE!';
-                break;
-            case 'draw' :
-                resultText.innerText = 'DRAW';
-                break;
-        }
     }
 
     updateScoreBoard() {
